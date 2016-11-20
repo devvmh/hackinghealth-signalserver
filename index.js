@@ -131,7 +131,7 @@ function describeRoom(name) {
         clients: {}
     };
     Object.keys(clients).forEach(function (id) {
-        console.log(JSON.stringify(adapter.nsp.connected))
+        console.log(JSON.stringify(adapter.nsp.connected[id]))
         result.clients[id] = adapter.nsp.connected[id] ? adapter.nsp.connected[id].resources : null;
     });
     return result;
