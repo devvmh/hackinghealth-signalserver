@@ -1,7 +1,8 @@
 const io = require('socket.io')()
 
 const config = {
-  stunservers: [{'url': 'stun:stun.l.google.com:19302'}]
+  stunservers: [{'url': 'stun:stun.l.google.com:19302'}],
+  turnservers: []
 }
 
 io.sockets.on('connection', function (client) {
