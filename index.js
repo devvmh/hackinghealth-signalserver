@@ -3,6 +3,7 @@ const stunservers = [{'url': 'stun:stun.l.google.com:19302'}]
 const { createStore } = require('redux')
 
 const reducer = (state = { connectedPeople: {}, liveMaps: {} }, action) => {
+  io.sockets.emit(action.type, null)
   switch (action.type) {
     case 'JOIN_ROOM':
       return Object.assign({}, state, {
@@ -33,11 +34,11 @@ store.subscribe(() => {
 io.on('connection', function(socket) {
   io.sockets.emit('STORE_UPDATED', store.getState())
 
-  socket.on('JOIN_ROOM', data => store.dispatch({ type: 'JOIN_ROOM', payload: data }))
-  socket.on('LEAVE_ROOM', () => store.dispatch({ type: 'LEAVE_ROOM', payload: socket }))
-  socket.on('JOIN_CALL', data => store.dispatch({ type: 'JOIN_CALL', payload: data }))
-  socket.on('LEAVE_CALL', () => store.dispatch({ type: 'LEAVE_CALL', payload: socket }))
-  socket.on('disconnect', () => store.dispatch({ type: 'DISCONNECT', payload: socket }))
+  socket.on('JOIN_ROOM', data => store.dispatch({ type: 'JOIN_ROOM', socket, payload: data }))
+  socket.on('LEAVE_ROOM', () => store.dispatch({ type: 'LEAVE_ROOM', socket, payload: socket }))
+  socket.on('JOIN_CALL', data => store.dispatch({ type: 'JOIN_CALL', socket, payload: data }))
+  socket.on('LEAVE_CALL', () => store.dispatch({ type: 'LEAVE_CALL', socket, payload: socket }))
+  socket.on('disconnect', () => store.dispatch({ type: 'DISCONNECT', socket, payload: socket }))
 })
 
 io.listen(parseInt(process.env.SIGNAL_SERVER_PORT) || 5000)
