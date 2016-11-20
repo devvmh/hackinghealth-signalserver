@@ -6,7 +6,7 @@
     "npm": "3.5.0"
   },
   "scripts": {
-    "serve": "node index.js"
+    "start": "node index.js"
   },
   "cacheDirectories": [
     "node_modules"

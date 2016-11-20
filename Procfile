@@ -1,1 +1,1 @@
-server: SIGNAL_SERVER_PORT=$PORT node index.js
+web: SIGNAL_SERVER_PORT=$PORT npm run start
