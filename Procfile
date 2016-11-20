@@ -1,1 +1,1 @@
-server: node index.js
+server: SIGNAL_SERVER_PORT=$PORT node index.js
