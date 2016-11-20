@@ -40,4 +40,6 @@ io.on('connection', function(socket) {
   socket.on('disconnect', () => store.dispatch({ type: 'DISCONNECT', payload: socket }))
 })
 
+console.log(process.env.SIGNAL_SERVER_PORT)
+console.log(process.env.PORT)
 io.listen(parseInt(process.env.SIGNAL_SERVER_PORT) || 5000)

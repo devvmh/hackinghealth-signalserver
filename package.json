@@ -6,7 +6,7 @@
     "npm": "3.10.9"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "SIGNAL_SERVER_PORT=$PORT node index.js"
   },
   "cacheDirectories": [
     "node_modules"
