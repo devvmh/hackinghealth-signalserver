@@ -6,13 +6,15 @@
     "npm": "3.10.9"
   },
   "scripts": {
-    "start": "SIGNAL_SERVER_PORT=$PORT node index.js"
+    "oldstart": "SIGNAL_SERVER_PORT=$PORT node index.js",
+    "start": "node signalmaster.js"
   },
   "cacheDirectories": [
     "node_modules"
   ],
   "dependencies": {
     "redux": "^3.6.0",
+    "signal-master": "^1.0.1",
     "socket.io": "^1.5.1"
   },
   "devDependencies": {}
