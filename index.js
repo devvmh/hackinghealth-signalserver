@@ -1,5 +1,8 @@
 const io = require('socket.io')()
-const stunservers = [{'url': 'stun:stun.l.google.com:19302'}]
+
+const config = {
+  stunservers: [{'url': 'stun:stun.l.google.com:19302'}]
+}
 
 io.sockets.on('connection', function (client) {
     client.resources = {
