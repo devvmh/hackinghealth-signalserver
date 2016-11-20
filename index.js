@@ -4,10 +4,10 @@ const { createStore } = require('redux')
 
 const reducer = (state = { connectedPeople: {}, liveMaps: {} }, action) => {
   switch (action.type) {
-    case 'JOIN_MAP':
+    case 'JOIN_ROOM':
       return Object.assign({}, state, {
       })
-    case 'LEAVE_MAP':
+    case 'LEAVE_ROOM':
       return Object.assign({}, state, {
       })
     case 'JOIN_CALL':
@@ -40,6 +40,4 @@ io.on('connection', function(socket) {
   socket.on('disconnect', () => store.dispatch({ type: 'DISCONNECT', payload: socket }))
 })
 
-console.log(process.env.SIGNAL_SERVER_PORT)
-console.log(process.env.PORT)
 io.listen(parseInt(process.env.SIGNAL_SERVER_PORT) || 5000)
