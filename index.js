@@ -131,7 +131,7 @@ function describeRoom(name) {
         clients: {}
     };
     Object.keys(clients).forEach(function (id) {
-        result.clients[id] = adapter.nsp.connected[id].resources;
+        result.clients[id] = adapter.nsp.connected[id] ? adapter.nsp.connected[id].resources : null;
     });
     return result;
 }
